@@ -1,0 +1,26 @@
+{
+  "openvpn_setting": {
+    "url": "usa_free_network.ovpn",
+    "enable": false
+  },
+  "spotify_task": {
+    "url": "https://open.spotify.com/playlist/22k8hmWVYEZ4nlD6lgbt4j?si=02f5c085cb494c6d",
+    "enable": true
+  },
+  "soundcloud_task": {
+    "url": "https://soundcloud.com/len9780/sets/test?si=c1debc5b53204d3eb0e7435c4711b972&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+    "enable": true
+  },
+  "youtube_task": {
+    "urls": [
+      "https://www.youtube.com/watch?v=FO87JtwWyAE",
+      "https://www.youtube.com/watch?v=iqahe3IMAjQ"
+    ],
+    "enable": true
+  },
+
+  "create_graph_setting": {
+    "enable": true
+  }
+}
+
