@@ -206,11 +206,14 @@ def download_soundcloud_max_quality(soundcloud_url, vpn_config, graph_enable):
         )
         cmd = [
             "yt-dlp",
-            "-f",
-            "bestaudio",
-            "--extract-audio",
-            "--audio-format",
-            "m4a",
+            "-f", "bestaudio",
+            "-x",
+            "--audio-format", "mp3",
+            "--audio-quality", "0",
+            "--embed-thumbnail",
+            "--embed-metadata",
+            # 進階解析：確保將 SoundCloud 上傳者寫入音樂的 Artist 欄位中
+            "--parse-metadata", "uploader:%(meta_artist)s",
             soundcloud_url,
         ]
         result = subprocess.run(cmd, check=True, text=True, capture_output=True)
@@ -235,13 +238,15 @@ def download_youtube_highest_audio(youtube_url, graph_enable):
     """處理單首 YouTube 下載的核心函式"""
     cmd = [
         "yt-dlp",
-        "-f",
-        "bestaudio",
+        "-f", "bestaudio",
         "-x",
-        "--audio-format",
-        "m4a",
-        "--audio-quality",
-        "0",
+        "--audio-format", "mp3",
+        "--audio-quality", "0",
+        "--embed-thumbnail",
+        "--embed-metadata",
+        # 進階解析：將 YouTube 上傳頻道解析為 Artist；如果有播放清單名稱，則將其解析為 Album 欄位
+        "--parse-metadata", "uploader:%(meta_artist)s",
+        "--parse-metadata", "playlist_title:%(meta_album)s",
         youtube_url,
     ]
     try:
